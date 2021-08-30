@@ -1,56 +1,91 @@
 cat .vimrc
 
 ```
-Last login: Mon Aug 30 12:25:09 on ttys000
+set number
+set showcmd
+set tabstop=4
+set nobackup
+set virtualedit=onemore
+set smartindent
+set showmatch
+set matchtime=1
+set ignorecase
+set smartcase
+set wrapscan
+set expandtab
+set shiftwidth=4
+set hidden
+set title
+set wrap
+set whichwrap=b,s,[,],<,>
+set backspace=indent,eol,start
+set display=lastline
+set pumheight=10
+set laststatus=2
+""set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
 
-~ master*
-❯ ls
-AnacondaProjects   Dotfile            ML_Workshop        anaconda
-Applications       Downloads          Movies             go
-BrytonBridge       Dropbox            Music              install.sh
-Desktop            ExpensesManagement Pictures           node
-Docker             HelloWorld         Public             node_modules
-Documents          Library            Reasearch          package-lock.json
 
-~ master*
-❯ ls .vimrc
-.vimrc
+ " Note: Skip initialization for vim-tiny or vim-small.
+ if 0 | endif
 
-~ master*
-❯ vim .vimrc
+ if &compatible
+   set nocompatible               " Be iMproved
+ endif
+
+ " Required:
+ set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+ " Required:
+ call neobundle#begin(expand('~/.vim/bundle/'))
+
+ " Let NeoBundle manage NeoBundle
+ " Required:
+ NeoBundleFetch 'Shougo/neobundle.vim'
+
+ " My Bundles here:
+ " Refer to |:NeoBundle-examples|.
+ " Note: You don't set neobundle setting in .gvimrc!
+
+ "statusbar lightline
+NeoBundle 'itchyny/lightline.vim'
+
+NeoBundle 'scrooloose/nerdtree'
+
+ call neobundle#end()
+
+ " Required:
+ filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+ NeoBundleCheck
+
+ "set colorscheme
+let g:solarized_termcolors=256
+syntax enable
+set background=dark
+colorscheme solarized
+
+ "set statusbar
+"NeoBundle 'itchyny/lightline.vim'
+let g:lightline = { 'colorscheme': 'wombat' }
 
 
+"{} () "" '' 2つ付与自動化
+inoremap { {}<LEFT>
+inoremap {<Enter> {}<LEFT><CR><Esc><S-o>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap [ []<LEFT>
 
-
-
-
-
-  1 set number
-  2 set showcmd
-  3 set tabstop=4
-  4 set nobackup
-  5 set virtualedit=onemore
-  6 set smartindent
-  7 set showmatch
-  8 set matchtime=1
-  9 set ignorecase
- 10 set smartcase
- 11 set wrapscan
- 12 set expandtab
- 13 set shiftwidth=4
- 14 set hidden
- 15 set title
- 16 set wrap
- 17 set whichwrap=b,s,[,],<,>
- 18 set backspace=indent,eol,start
- 19 set display=lastline
- 20 set pumheight=10
- 21 set laststatus=2
- 22 ""set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%@@@
- NORMAL  .vimrc                                unix | utf-8 | vim    1%    1:1
-".vimrc" 83L, 1732C
+"show Tree
+""auto StdinReadPre * let s:std_in=1
+""auto VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> : NERDTreeToggle<CR>
 
 ```
+
 
 
 

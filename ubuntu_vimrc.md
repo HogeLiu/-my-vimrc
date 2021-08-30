@@ -1,7 +1,4 @@
-$ cat .vimrc
-
 ```
-
 " ファイルを上書きする前にバックアップを作ることを無効化
 set nowritebackup
 " ファイルを上書きする前にバックアップを作ることを無効化
@@ -14,6 +11,8 @@ set backspace=indent,eol,start
 set ambiwidth=double
 " wildmenuオプションを有効(vimバーからファイルを選択できる)
 set wildmenu
+" utf-8
+set encoding=UTF-8
 
 "----------------------------------------
 " 検索
@@ -152,6 +151,11 @@ Plug 'lyuts/vim-rtags'
 Plug 'mbbill/undotree'
 "Plug 'ulwlu/elly.vim'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+""Plug 'ryanoasis/vim-devicons'
+
+
 " Initialize plugin system
 call plug#end()
 
@@ -193,7 +197,6 @@ NeoBundleCheck
 
 " set colorscheme
 ""molokai
-" git clone https://github.com/tomasr/molokai.git
 syntax on
 colorscheme molokai
 set t_Co=256
@@ -201,7 +204,31 @@ highlight Normal ctermbg=none
 
 
 " set statusbar
-let g:lightline= { 'colorscheme': 'wombat' }
+""let g:lightline= { 'colorscheme': 'wombat' }
+
+
+let g:airline_theme = 'wombat'
+set laststatus=2
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#wordcount#enabled = 0
+
+" tab の切り替え
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+let g:airline#extensions#tabline#buffer_idx_format = {
+\ '0': '0 ',
+\ '1': '1 ',
+\ '2': '2 ',
+\ '3': '3 ',
+\ '4': '4 ',
+\ '5': '5 ',
+\ '6': '6 ',
+\ '7': '7 ',
+\ '8': '8 ',
+\ '9': '9 '
+\}
+
 
 
 " show tree bar
@@ -215,6 +242,5 @@ inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
 inoremap [ []<LEFT>
 "inoremap ' ''<LEFT>
-
 ```
 
